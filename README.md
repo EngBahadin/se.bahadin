@@ -1,63 +1,109 @@
 # Bahadin Ali - Portfolio
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+Personal portfolio website showcasing my work as a Frontend Developer. Built with [Nuxt.js](https://nuxt.com) and [Nuxt UI](https://ui.nuxt.com).
 
-Personal portfolio website showcasing my work as a Frontend Developer. Built with [Nuxt UI](https://ui.nuxt.com).
+## About
 
-- Portfolio website for Bahadin Ali
-- Frontend Developer based in Erbil, Iraq
-- Specializing in React, Next.js, Vue.js, and modern web technologies
+I'm a Frontend Developer based in Erbil, Iraq, specializing in building scalable and engaging web & app experiences with modern technologies like React, Next.js, Vue.js, Nuxt.js, and React Native.
 
-<a href="https://portfolio-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/portfolio-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png">
-    <img alt="Nuxt Portfolio Template" src="https://ui.nuxt.com/assets/templates/nuxt/portfolio-dark.png">
-  </picture>
-</a>
+## Features
 
-## Quick Start
+- 🎨 Modern and responsive design
+- 🌓 Dark/Light mode support
+- ⚡ Fast performance with Nuxt 4
+- 🎮 Interactive tech stack showcase (Snake game)
+- 📱 Mobile-friendly
+- 🚀 Optimized images with Nuxt Image
+- ✨ Smooth animations with Motion
 
-```bash [Terminal]
-pnpm create nuxt@latest -- -t github:nuxt-ui-templates/portfolio
+## Tech Stack
+
+- **Framework**: Nuxt.js 4
+- **UI Library**: Nuxt UI
+- **Styling**: Tailwind CSS
+- **Animations**: Motion-v
+- **Icons**: Lucide, Simple Icons, Devicon
+- **Content**: Nuxt Content
+- **Package Manager**: pnpm
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended) or npm
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <your-repo-url>
+cd portfolio
 ```
 
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=portfolio&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fportfolio&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fportfolio-dark.png&demo-url=https%3A%2F%2Fportfolio-template.nuxt.dev%2F&demo-title=Nuxt%20Portfolio%20Template&demo-description=A%20sleek%20portfolio%20template%20to%20showcase%20your%20work%2C%20skills%20and%20blog%20powered%20by%20Nuxt%20Content.)
-
-## Setup
-
-Make sure to install the dependencies:
+2. Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-## Development Server
+### Development
 
-Start the development server on `http://localhost:3000`:
+Start the development server:
 
 ```bash
 pnpm dev
 ```
 
-## Production
+Visit `http://localhost:3000` to see your site.
 
-Build the application for production:
+### Build
+
+Build for production:
 
 ```bash
 pnpm build
 ```
 
-Locally preview production build:
+Preview production build:
 
 ```bash
 pnpm preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Project Structure
 
-## Renovate integration
+```
+portfolio/
+├── app/
+│   ├── components/     # Vue components
+│   ├── pages/          # Application pages
+│   └── assets/         # CSS and static assets
+├── content/            # Content files (YAML)
+├── public/             # Static files (images, etc.)
+└── nuxt.config.ts      # Nuxt configuration
+```
 
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+## Deployment
+
+This project can be easily deployed on [Vercel](https://vercel.com):
+
+1. Push your code to GitHub
+2. Import your repository on Vercel
+3. Vercel will auto-detect Nuxt.js and configure the build settings
+4. Deploy!
+
+## Contact
+
+- **Email**: se.bahauddin@gmail.com
+- **GitHub**: [@EngBahadin](https://github.com/EngBahadin)
+- **LinkedIn**: [bahadin-ali](https://www.linkedin.com/in/bahadin-ali/)
+
+## License
+
+This project is private and personal.
+
+---
+
+Built with ❤️ using Nuxt.js
