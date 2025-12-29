@@ -1,0 +1,7 @@
+title: UniFood
+description: Online food ordering platform for college students to order meals in class and pick them up in the cafeteria without delay. Built with both React (Next.js) and Vue.js - same project, same goal, two different repositories showcasing versatility across frameworks.
+image: /hero/uniFood.png
+url: "#"
+tags: ["React", "Next.js", "Framer Motion", "Vue.js", "Pinia", "TypeScript", "Tailwind CSS", "Tanstack Query", "Zod"]
+date: "2024"
+

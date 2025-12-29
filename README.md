@@ -1,11 +1,12 @@
-# Nuxt Portfolio Template
+# Bahadin Ali - Portfolio
 
 [![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
 
-Use this template to create your own portfolio with [Nuxt UI](https://ui.nuxt.com).
+Personal portfolio website showcasing my work as a Frontend Developer. Built with [Nuxt UI](https://ui.nuxt.com).
 
-- [Live demo](https://portfolio-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/getting-started/installation)
+- Portfolio website for Bahadin Ali
+- Frontend Developer based in Erbil, Iraq
+- Specializing in React, Next.js, Vue.js, and modern web technologies
 
 <a href="https://portfolio-template.nuxt.dev/" target="_blank">
   <picture>
@@ -18,7 +19,7 @@ Use this template to create your own portfolio with [Nuxt UI](https://ui.nuxt.co
 ## Quick Start
 
 ```bash [Terminal]
-npm create nuxt@latest -- -t github:nuxt-ui-templates/portfolio
+pnpm create nuxt@latest -- -t github:nuxt-ui-templates/portfolio
 ```
 
 ## Deploy your own

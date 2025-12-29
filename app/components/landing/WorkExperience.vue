@@ -24,14 +24,14 @@ defineProps<{
           :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
           :transition="{ delay: 0.4 + 0.2 * index }"
           :in-view-options="{ once: true }"
-          class="text-muted flex items-center text-nowrap gap-2"
+          class="text-muted flex items-center text-nowrap gap-1"
         >
           <p class="text-sm">
             {{ experience.date }}
           </p>
           <USeparator />
           <ULink
-            class="flex items-center gap-1"
+            class="flex items-center gap-2"
             :to="experience.company.url"
             target="_blank"
           >
@@ -39,11 +39,23 @@ defineProps<{
               {{ experience.position }}
             </span>
             <div
-              class="inline-flex items-center gap-1"
+              class="inline-flex items-center gap-1.5"
               :style="{ color: experience.company.color }"
             >
               <span class="font-medium">{{ experience.company.name }}</span>
-              <UIcon :name="experience.company.logo" />
+              <div
+                v-if="experience.company.logo && experience.company.logo.startsWith('/')"
+                class="rotate-3 size-12 rounded-lg bg-white dark:bg-gray-100 p-2 ring ring-default ring-offset-2 ring-offset-bg overflow-hidden transition-transform duration-300 hover:scale-110 cursor-pointer"
+              >
+                <NuxtImg
+                  :src="experience.company.logo"
+                  :alt="experience.company.name"
+                  class="w-full h-full object-contain transition-transform duration-300"
+                  format="webp"
+                  quality="90"
+                />
+              </div>
+              <UIcon v-else-if="experience.company.logo" :name="experience.company.logo" class="size-4" />
             </div>
           </ULink>
         </Motion>
@@ -51,7 +63,3 @@ defineProps<{
     </template>
   </UPageSection>
 </template>
-
-<style scoped>
-
-</style>
