@@ -18,6 +18,10 @@ const { data: projects } = await useAsyncData('projects', () => {
   return queryCollection('projects').all()
 })
 
+// Image error states
+const aboutImageError = ref(false)
+const projectImageErrors = ref<Record<string, boolean>>({})
+
 useSeoMeta({
   title: page.value?.seo.title || page.value?.title,
   ogTitle: page.value?.seo.title || page.value?.title,
@@ -31,19 +35,19 @@ useSeoMeta({
     <LandingHero :page />
     
     <UPageSection id="about" :ui="{ container: '!pt-0' }">
-      <div class="max-w-3xl mx-auto">
+      <div class="max-w-3xl mx-auto px-4">
         <UPageHero
           :title="aboutPage?.title"
           :description="aboutPage?.description"
           orientation="horizontal"
-      :ui="{
-            container: 'lg:flex sm:flex-row items-center',
+          :ui="{
+            container: 'flex flex-col sm:flex-row items-center gap-4',
             title: '!mx-0 text-left text-xl sm:text-2xl',
             description: '!mx-0 text-left text-sm text-muted',
             links: 'justify-start',
           }"
         >
-          <div class="sm:rotate-4 size-20 sm:size-24 rounded-lg ring ring-default ring-offset-3 ring-offset-bg overflow-hidden transition-transform duration-300 hover:scale-110 cursor-pointer">
+          <div class="sm:rotate-4 size-20 sm:size-24 rounded-lg ring ring-default ring-offset-3 ring-offset-bg overflow-hidden transition-transform duration-300 hover:scale-110 cursor-pointer relative">
             <NuxtImg
               src="/hero/myPic2.png"
               alt="Bahadin Ali - Frontend Developer"
@@ -52,7 +56,14 @@ useSeoMeta({
               loading="lazy"
               format="webp"
               quality="90"
+              @error="aboutImageError = true"
             />
+            <div
+              v-if="aboutImageError"
+              class="absolute inset-0 flex items-center justify-center bg-primary text-primary-foreground font-bold text-xl sm:text-2xl rounded-lg"
+            >
+              B
+            </div>
           </div>
         </UPageHero>
         <div class="mt-4">
@@ -189,14 +200,23 @@ useSeoMeta({
               </div>
             </div>
           </template>
-          <NuxtImg
-            :src="project.image"
-            :alt="project.title"
-            class="object-cover w-full h-48 rounded-lg transition-transform duration-300 hover:scale-105 cursor-pointer"
-            loading="lazy"
-            format="webp"
-            quality="85"
-          />
+          <div class="relative w-full h-48 rounded-lg overflow-hidden">
+            <NuxtImg
+              :src="project.image"
+              :alt="project.title"
+              class="object-cover w-full h-full transition-transform duration-300 hover:scale-105 cursor-pointer"
+              loading="lazy"
+              format="webp"
+              quality="85"
+              @error="projectImageErrors[project.title] = true"
+            />
+            <div
+              v-if="projectImageErrors[project.title]"
+              class="absolute inset-0 flex items-center justify-center bg-primary text-primary-foreground font-bold text-4xl rounded-lg"
+            >
+              B
+            </div>
+          </div>
         </UPageCard>
       </Motion>
     </UPageSection>

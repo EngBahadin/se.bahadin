@@ -39,6 +39,9 @@ onUnmounted(() => {
   }
 })
 
+// Image error state
+const imageError = ref(false)
+
 // Frontend technologies to display in hero
 const frontendTechs = [
   { name: 'React', icon: 'i-simple-icons-react', color: 'cyan', bgColor: 'bg-cyan-500/10', borderColor: 'border-cyan-500/30', textColor: 'text-cyan-400' },
@@ -78,7 +81,7 @@ const frontendTechs = [
           delay: 0.1
         }"
       >
-        <div class="size-24 sm:size-28 lg:size-32 ring ring-default ring-offset-3 ring-offset-bg rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 cursor-pointer">
+        <div class="size-24 sm:size-28 lg:size-32 ring ring-default ring-offset-3 ring-offset-bg rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 cursor-pointer relative">
           <NuxtImg
             :src="colorMode.value === 'dark' ? global.picture?.dark : global.picture?.light"
             :alt="global.picture?.alt"
@@ -88,7 +91,14 @@ const frontendTechs = [
             fetchpriority="high"
             format="webp"
             quality="90"
+            @error="imageError = true"
           />
+          <div
+            v-if="imageError"
+            class="absolute inset-0 flex items-center justify-center bg-primary text-primary-foreground font-bold text-2xl sm:text-3xl lg:text-4xl"
+          >
+            B
+          </div>
         </div>
       </Motion>
     </template>
@@ -132,7 +142,7 @@ const frontendTechs = [
         }"
       >
         {{ page.description }} With 
-        <span class="inline-block min-w-[140px] text-left">
+        <span class="inline-block min-w-[120px] sm:min-w-[140px] text-left">
           <Transition
             mode="out-in"
             enter-active-class="transition-all duration-300"
@@ -211,45 +221,47 @@ const frontendTechs = [
       </div>
     </template>
 
-    <UMarquee
-      pause-on-hover
-      class="py-2 -mx-8 sm:-mx-12 lg:-mx-16 [--duration:40s]"
-    >
-      <Motion
-        v-for="(tech, index) in frontendTechs"
-        :key="tech.name"
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: index * 0.1
-        }"
+    <div class="w-full overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+      <UMarquee
+        pause-on-hover
+        class="py-2 [--duration:40s]"
       >
-        <div
-          :class="[
-            tech.bgColor,
-            tech.borderColor,
-            tech.textColor,
-            'rounded-xl border-2 p-6 aspect-square flex flex-col items-center justify-center gap-3 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:shadow-xl',
-            index % 2 === 0 ? '-rotate-2' : 'rotate-2'
-          ]"
-          style="min-width: 150px; min-height: 150px;"
+        <Motion
+          v-for="(tech, index) in frontendTechs"
+          :key="tech.name"
+          :initial="{
+            scale: 1.1,
+            opacity: 0,
+            filter: 'blur(20px)'
+          }"
+          :animate="{
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)'
+          }"
+          :transition="{
+            duration: 0.6,
+            delay: index * 0.1
+          }"
         >
-          <UIcon
-            :name="tech.icon"
-            class="size-16"
-          />
-          <span class="text-sm font-bold text-center">{{ tech.name }}</span>
-        </div>
-      </Motion>
-    </UMarquee>
+          <div
+            :class="[
+              tech.bgColor,
+              tech.borderColor,
+              tech.textColor,
+              'rounded-xl border-2 p-4 sm:p-6 aspect-square flex flex-col items-center justify-center gap-2 sm:gap-3 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:shadow-xl',
+              index % 2 === 0 ? '-rotate-2' : 'rotate-2'
+            ]"
+            style="min-width: 100px; min-height: 100px; max-width: 150px; max-height: 150px;"
+          >
+            <UIcon
+              :name="tech.icon"
+              class="size-12 sm:size-16"
+            />
+            <span class="text-xs sm:text-sm font-bold text-center">{{ tech.name }}</span>
+          </div>
+        </Motion>
+      </UMarquee>
+    </div>
   </UPageHero>
 </template>

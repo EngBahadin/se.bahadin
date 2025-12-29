@@ -4,6 +4,8 @@ import type { IndexCollectionItem } from '@nuxt/content'
 defineProps<{
   page: IndexCollectionItem
 }>()
+
+const logoImageError = ref(false)
 </script>
 
 <template>
@@ -24,7 +26,7 @@ defineProps<{
           :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
           :transition="{ delay: 0.4 + 0.2 * index }"
           :in-view-options="{ once: true }"
-          class="text-muted flex items-center text-nowrap gap-1"
+          class="text-muted flex flex-wrap items-center gap-1 sm:flex-nowrap"
         >
           <p class="text-sm">
             {{ experience.date }}
@@ -45,7 +47,7 @@ defineProps<{
               <span class="font-medium">{{ experience.company.name }}</span>
               <div
                 v-if="experience.company.logo && experience.company.logo.startsWith('/')"
-                class="rotate-3 size-12 rounded-lg bg-white dark:bg-gray-100 p-2 ring ring-default ring-offset-2 ring-offset-bg overflow-hidden transition-transform duration-300 hover:scale-110 cursor-pointer"
+                class="rotate-3 size-12 rounded-lg bg-white dark:bg-gray-100 p-2 ring ring-default ring-offset-2 ring-offset-bg overflow-hidden transition-transform duration-300 hover:scale-110 cursor-pointer relative"
               >
                 <NuxtImg
                   :src="experience.company.logo"
@@ -53,7 +55,14 @@ defineProps<{
                   class="w-full h-full object-contain transition-transform duration-300"
                   format="webp"
                   quality="90"
+                  @error="logoImageError = true"
                 />
+                <div
+                  v-if="logoImageError"
+                  class="absolute inset-0 flex items-center justify-center bg-primary text-primary-foreground font-bold text-xs rounded-lg"
+                >
+                  B
+                </div>
               </div>
               <UIcon v-else-if="experience.company.logo" :name="experience.company.logo" class="size-4" />
             </div>

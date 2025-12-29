@@ -2,8 +2,8 @@
 </script>
 
 <template>
-  <div>
-    <UContainer class="sm:border-x border-default pt-10">
+  <div class="w-full overflow-x-hidden">
+    <UContainer class="sm:border-x border-default pt-10 max-w-full">
       <AppHeader :links="navLinks" />
       <slot />
       <AppFooter />

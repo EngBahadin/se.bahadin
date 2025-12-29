@@ -34,8 +34,10 @@ useSeoMeta({
     <NuxtLoadingIndicator />
     <LoadingScreen />
     <NuxtLayout
-      v-if="!isInitialLoading"
-      class="transition-opacity duration-500"
+      :class="[
+        'transition-opacity duration-500',
+        isInitialLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'
+      ]"
     >
       <UMain class="relative">
         <NuxtPage />
